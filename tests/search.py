@@ -4,14 +4,12 @@ import os
 from pathlib import Path
 import random
 sys.path.append(str(Path(os.getcwd()).parent))
-from lib.utils.csv_utils import read_from_csv
-
 
 class UserBehavior(TaskSet):
     @task
     def search(self):
         try:
-            city = str(random.choice(read_from_csv("resource/cities.csv")))
+            city = str(random.choice(('London', 'Munich', 'Paris', 'Istanbul')))
         except IndexError as index_error:
             print("No data found in .csv file. See: ".format(index_error))
 
